@@ -13,6 +13,7 @@ Klasse zur Erstellung von Formularen anhand eines DCA-Arrays.
 ====================
 Formular.php und FormularTL_DCA.php nach system/libraries kopieren.
 
+
 === Konfiguration ===
 =====================
 Alle Optionen können im $GLOBALS['TL_FORM']-Array systemweit vorgegeben werden.
@@ -31,7 +32,15 @@ Parameter:
 							%error Widget::getErrorAsHTML()
 							%errorPlain Widget::getErrorAsString()
 	array attributes:	Array mit Attributen für die Widget::parse() Methode. Z.B. array('tableless'=>true)
-	
+
+
+=== ce_formularTest ===
+=======================
+Inhaltselement womit das im Code-Feld eingetragenen DCA-Array gerendert wird.
+NUR zu Testzwecken, niemals produktiv einsetzen!
+Die Variable muss $dca lauten. Vgl. Beispiel unten.
+Eine Formular-Konfiguration ist hier nicht möglich.
+
 	
 === Beispiel ===
 ==================
