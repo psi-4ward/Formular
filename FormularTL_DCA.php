@@ -27,6 +27,7 @@ class FormularTL_DCA extends Formular {
 	 */
 	public function __construct($table,$palette='default'){
 		parent::__construct($table);
+		
 		$this->import('Database');
 		
 		$this->table = $table;
@@ -51,6 +52,7 @@ class FormularTL_DCA extends Formular {
 			if(!isset($GLOBALS['TL_DCA'][$this->table]['fields'][$field])) continue;
 			
 			$dca[$field] = $GLOBALS['TL_DCA'][$this->table]['fields'][$field];
+			$dca[$field]['eval']['helpmessage'] = $GLOBALS['TL_DCA'][$this->table]['fields'][$field]['label'][1];
 		}
 		
 		// add submit button
@@ -64,6 +66,7 @@ class FormularTL_DCA extends Formular {
 		
 		$this->setDCA($dca);
 	}
+	
 	
 	/**
 	 * Load a record form the database

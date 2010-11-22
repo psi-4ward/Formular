@@ -102,6 +102,7 @@ class Formular extends Controller
 	 */
 	public function __construct($formId)
 	{
+		parent::__construct();
 		$this->import('Input');
 		
 		$this->formId = $formId;
@@ -112,7 +113,6 @@ class Formular extends Controller
 		{
 			foreach($GLOBALS['TL_FORM'] as $param => $val) $this->setConfig($param,$val);	
 		}
-		parent::__construct();
 		
 	}
 	
@@ -417,7 +417,11 @@ window.addEvent(\'domready\', function() { ' . implode("\n",$arrDatepicker) . ' 
 		foreach ($this->arrDCA as $field => $arrData)
 		{
 			$strClass = $GLOBALS['TL_FFL'][$arrData['inputType']];
-			 if(!strlen($strClass)) trigger_error("InputType {$arrData['inputType']} not found in TL_FFL-Array.",E_USER_NOTICE);
+			
+			// TEST IF BE_FFL also work
+			if(!strlen($strClass)) $strClass = $GLOBALS['BE_FFL'][$arrData['inputType']];
+			
+			if(!strlen($strClass)) trigger_error("InputType {$arrData['inputType']} not found in TL_FFL-Array.",E_USER_NOTICE);
 			// Continue if the class is not defined
 			if (!$this->classFileExists($strClass))
 			{
